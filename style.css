@@ -11,12 +11,13 @@ body {
   background: linear-gradient(to right, #6a11cb, #2575fc);
   color: white;
 
-  height: 100vh;
-
+  min-height: 100vh;     /* ⭐ important */
+  
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+
+  padding: 40px 20px;    /* space at top */
 }
 
 /* App title */
@@ -27,16 +28,17 @@ h1 {
 
 /* Weather card */
 .weather-box {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
 
-  padding: 40px;
-  border-radius: 20px;
+  padding: 45px 40px;
+  border-radius: 24px;
 
-  width: 320px;
+  width: 600px;           /* ⭐ bigger */
+  max-width: 90%;
+
   text-align: center;
-
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* City name */
@@ -121,4 +123,57 @@ h1 {
 .error-message {
   color: #ffdddd;
   font-weight: bold;
+}
+
+/* Forecast section */
+.forecast-section {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Forecast grid */
+.forecast-container {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+
+  margin-top: 15px;
+}
+
+/* Forecast card */
+.forecast-card {
+  background: rgba(255,255,255,0.22);
+  padding: 15px;
+  border-radius: 14px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.forecast-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Forecast day */
+.forecast-card h4 {
+  margin-bottom: 8px;
+}
+
+/* Forecast icon */
+.forecast-card img {
+  width: 60px;
+}
+
+/* Forecast temperature */
+.forecast-card p:first-of-type {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .weather-box {
+    width: 95%;
+    padding: 30px 20px;
+  }
 }
