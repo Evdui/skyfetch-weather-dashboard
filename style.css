@@ -203,3 +203,96 @@ h1 {
 .recent-btn:hover {
   background: rgba(255,255,255,0.5);
 }
+
+/* ============================= */
+/* 🖼️ BACKGROUND SYSTEM         */
+/* ============================= */
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background-image 1.2s ease-in-out;
+}
+
+/* 🔳 Overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: -1;
+  transition: background 0.5s;
+}
+
+/* ☀️ Light mode overlay */
+body.light::before {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* 🌙 Dark mode overlay */
+body.dark::before {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* 🌙 Theme Toggle Button — Corner Style */
+
+#mode-toggle {
+  position: fixed;      /* stays in place on scroll */
+  top: 20px;
+  right: 20px;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+  border: none;
+
+  font-size: 1.4rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* ✨ Hover effect */
+
+#mode-toggle:hover {
+  transform: scale(1.12);
+
+  background: rgba(255, 255, 255, 0.5);
+
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.8),
+    0 6px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* 👇 Dark-mode specific styling */
+
+body.dark #mode-toggle {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+body.dark #mode-toggle:hover {
+  background: rgba(0, 0, 0, 0.7);
+
+  box-shadow:
+    0 0 18px rgba(120, 200, 255, 0.9),
+    0 6px 25px rgba(0, 0, 0, 0.6);
+}

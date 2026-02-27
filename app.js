@@ -227,5 +227,99 @@ WeatherApp.prototype.loadLastCity = function () {
   }
 };
 
+/* ================================= */
+/* 🌓 THEME + BACKGROUND ROTATION    */
+/* ================================= */
+
+/* 🖼️ Image lists (your numbering) */
+
+const darkImages = [
+  "assets/dark/1.jpg",
+  "assets/dark/2.jpg",
+  "assets/dark/3.jpg",
+  "assets/dark/4.jpg"
+];
+
+const lightImages = [
+  "assets/light/1.jpg",
+  "assets/light/2.jpg",
+  "assets/light/3.jpg",
+  "assets/light/4.jpg"
+];
+
+/* 🔧 State variables */
+
+let currentMode = "dark";
+let currentIndex = 0;
+let rotationInterval;
+
+
+/* 🔹 Change background */
+
+function changeBackground() {
+
+  const images =
+    currentMode === "dark"
+      ? darkImages
+      : lightImages;
+
+  document.body.style.backgroundImage =
+    `url('${images[currentIndex]}')`;
+
+  currentIndex =
+    (currentIndex + 1) % images.length;
+}
+
+
+/* 🔹 Start automatic rotation */
+
+function startRotation() {
+
+  clearInterval(rotationInterval);
+
+  changeBackground(); // show immediately
+
+  rotationInterval =
+    setInterval(changeBackground, 180000);
+  // 🔥 Change every 3 minutes
+}
+
+
+/* 🔹 Toggle button logic */
+
+const toggleBtn =
+  document.getElementById("mode-toggle");
+
+toggleBtn.addEventListener("click", () => {
+
+  if (currentMode === "dark") {
+
+    currentMode = "light";
+
+    document.body.classList.remove("dark");
+    document.body.classList.add("light");
+
+    toggleBtn.textContent = "☀️";
+
+  } else {
+
+    currentMode = "dark";
+
+    document.body.classList.remove("light");
+    document.body.classList.add("dark");
+
+    toggleBtn.textContent = "🌙";
+  }
+
+  currentIndex = 0;   // restart images
+  startRotation();    // restart timer
+});
+
+
+/* 🔹 Initial page load */
+
+document.body.classList.add("dark");
+startRotation();
+
 /* 🔥 CREATE APP INSTANCE */
 const app = new WeatherApp("b8ccb6f69b39f97d7f411f3af38d45b5");
