@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <title>SkyFetch Weather</title>
 
-  <!-- Link CSS -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Axios CDN -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
@@ -15,7 +13,7 @@
 
   <button id="mode-toggle" aria-label="Toggle theme">🌙</button>
 
-  <h1>SkyFetch 🌤️</h1>
+<h1>SkyFetch 🌤️</h1>
 
 <div class="search-section">
   <input
@@ -24,18 +22,20 @@
     placeholder="Enter city name..."
   />
   <button id="search-btn">🔍 Search</button>
+  <button id="unit-toggle">°C</button>
+</div>
+
+<!-- 👇 FULL recent section moved here -->
+<div class="recent-section">
+  <h3>Recent Searches</h3>
+  <div id="recent-container"></div>
 </div>
 
 <div id="weather-display" class="weather-box">
   <p>Enter a city to get weather 🌍</p>
 </div>
 
-<div class="recent-section">
-  <h3>Recent Searches</h3>
-  <div id="recent-container"></div>
-</div>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 
 </body>
 </html>
